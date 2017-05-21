@@ -10,7 +10,7 @@
 # main script
 
 if len(argv) < 2:
-  raise StandardError, "Syntax: dview.py --n 512 dump.1 ..."
+  raise Exception("Syntax: dview.py --n 512 dump.1 ...")
 
 if argv[1] == "--n":
   n = int(argv[2])

@@ -118,8 +118,8 @@ class patch:
 
   def build(self,n,style,*types):
     cmd = "atoms,bonds,tris,segments,bodies,volume = self.%s(*types)" % style
-    for i in xrange(n):
-      exec cmd
+    for i in range(n):
+      exec(cmd)
       self.molecules.append([atoms,bonds,tris,segments,bodies])
       self.volume += volume
 
@@ -151,7 +151,7 @@ class patch:
       latflag = 1
       if self.lattice[0]*self.lattice[1]*self.lattice[2] != \
              len(self.molecules):
-        raise StandardError,"lattice inconsistent with # of molecules"
+        raise Exception("lattice inconsistent with # of molecules")
     else: latflag = 0
 
     idatom = idbond = idtri = idmol = 0
@@ -327,7 +327,7 @@ class patch:
       d.headers["bond types"] = 1
     if tris: d.headers["triangles"] = len(tris)
 
-    if tris: print "TRIS",len(tris),d.headers["triangles"]
+    if tris: print("TRIS",len(tris),d.headers["triangles"])
     d.headers["xlo xhi"] = (self.xlo,self.xhi)
     d.headers["ylo yhi"] = (self.ylo,self.yhi)
     d.headers["zlo zhi"] = (self.zlo,self.zhi)
@@ -405,7 +405,7 @@ class patch:
     if self.lattice[0] or self.lattice[1]:
       latflag = 1
       if self.lattice[0]*self.lattice[1] != len(self.molecules):
-        raise StandardError,"lattice inconsistent with # of molecules"
+        raise Exception("lattice inconsistent with # of molecules")
     else: latflag = 0
     
     idatom = idbond = idmol = 0
@@ -1085,7 +1085,7 @@ class patch:
     sep = params[1]
     type = params[2]
     if n % 2 == 0:
-      raise StandardError, "N in patch::star2d is not odd"
+      raise Exception("N in patch::star2d is not odd")
     middle = n/2
     
     atoms = []
@@ -1155,7 +1155,7 @@ class patch:
 
     list = []
     rad = sqrt(0.5/(1-cos(2.0*pi/n)))
-    for i in xrange(n):
+    for i in range(n):
       theta = 2.0*pi * i/n
       list.append([rad*cos(theta),rad*sin(theta),0])
 
@@ -1440,7 +1440,7 @@ class patch:
     # adjust sub-particle coords so COM is at (0,0,0)
 
     rad = sqrt(0.5/(1-cos(2.0*pi/n)))
-    for i in xrange(n):
+    for i in range(n):
       theta = 2.0*pi * i/n
       bodies.append([rad*cos(theta),rad*sin(theta),0])
 
