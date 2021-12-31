@@ -52,7 +52,7 @@ Tools:
 # -------------------------------------------------------------------------
 # modules needed by pizza.py
 
-import sys, subprocess, os, string, exceptions, glob, re
+import sys, subprocess, os, string, glob, re
 from time import clock
 
 # readline not available in all Pythons
