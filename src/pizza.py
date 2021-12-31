@@ -53,7 +53,8 @@ Tools:
 # modules needed by pizza.py
 
 import sys, subprocess, os, string, glob, re
-from time import clock
+# from time import clock
+import time
 
 # readline not available in all Pythons
 
@@ -232,9 +233,11 @@ def trap(type,value,tback):
        return
      elif words[0][1:] == "time":
        cmd = string.join(words[1:])
-       t1 = clock()
+      #  t1 = clock()
+       t1 = time.time()
        exec(cmd, namespace)
-       t2 = clock()
+      #  t2 = clock()
+       t2 = time.time()
        print("CPU time = ",t2-t1)
        return
      
