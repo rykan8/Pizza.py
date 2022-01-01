@@ -109,16 +109,16 @@ class data:
       found = 0
       for keyword in hkeywords:
         if line.find(keyword) >= 0:
-	  found = 1
-	  words = line.split()
-	  if keyword == "xlo xhi" or keyword == "ylo yhi" or \
-	    keyword == "zlo zhi":
-	    headers[keyword] = (float(words[0]),float(words[1]))
-	  elif keyword == "xy xz yz":
-	    headers[keyword] = \
-              (float(words[0]),float(words[1]),float(words[2]))
+          found = 1
+          words = line.split()
+          if keyword == "xlo xhi" or keyword == "ylo yhi" or \
+            keyword == "zlo zhi":
+            headers[keyword] = (float(words[0]),float(words[1]))
+          elif keyword == "xy xz yz":
+            headers[keyword] = \
+                    (float(words[0]),float(words[1]),float(words[2]))
           else:
-	    headers[keyword] = int(words[0])
+            headers[keyword] = int(words[0])
       if not found:
         break
 
@@ -128,10 +128,10 @@ class data:
       for pair in skeywords:
         keyword,length = pair[0],pair[1]
         if keyword == line:
-	  found = 1
+          found = 1
           if length not in headers:
             raise Exception("data section %s has no matching header value" % line)
-	  f.readline()
+          f.readline()
           list = []
           for i in range(headers[length]): list.append(f.readline())
           sections[keyword] = list
@@ -253,19 +253,19 @@ class data:
       if keyword in self.headers:
         if keyword == "xlo xhi" or keyword == "ylo yhi" or \
                keyword == "zlo zhi":
-	  pair = self.headers[keyword]
-	  print(pair[0],pair[1],keyword, file=f)
+          pair = self.headers[keyword]
+          print(pair[0],pair[1],keyword, file=f)
         elif keyword == "xy xz yz":
-	  triple = self.headers[keyword]
-	  print(triple[0],triple[1],triple[2],keyword, file=f)
+          triple = self.headers[keyword]
+          print(triple[0],triple[1],triple[2],keyword, file=f)
         else:
-	  print(self.headers[keyword],keyword, file=f)
+          print(self.headers[keyword],keyword, file=f)
     for pair in skeywords:
       keyword = pair[0]
       if keyword in self.sections:
         print("\n%s\n" % keyword, file=f)
         for line in self.sections[keyword]:
-	  print(line, end=' ', file=f)
+          print(line, end=' ', file=f)
     f.close()
 
   # --------------------------------------------------------------------

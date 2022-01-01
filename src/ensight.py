@@ -268,20 +268,20 @@ class ensight:
       files = []
       if n < 10:
         file = root + "000" + str(n) + ".xyz"
-	for pair in pairs:
-	  files.append(root + "000" + str(n) + "." + pair[0])
+        for pair in pairs:
+          files.append(root + "000" + str(n) + "." + pair[0])
       elif n < 100:
         file = root + "00" + str(n) + ".xyz"
-	for pair in pairs:
-	  files.append(root + "00" + str(n) + "." + pair[0])
+        for pair in pairs:
+          files.append(root + "00" + str(n) + "." + pair[0])
       elif n < 1000:
         file = root + "0" + str(n) + ".xyz"
-	for pair in pairs:
-	  files.append(root + "0" + str(n) + "." + pair[0])
+        for pair in pairs:
+          files.append(root + "0" + str(n) + "." + pair[0])
       else:
-        file = root + str(n) + ".xyz"
-	for pair in pairs:
-	  files.append(root + str(n) + "." + pair[0])
+          file = root + str(n) + ".xyz"
+          for pair in pairs:
+            files.append(root + str(n) + "." + pair[0])
 
       if self.which == 0:
         f = open(file,"w")
@@ -309,7 +309,7 @@ class ensight:
           self.variable_file_atoms(f,pairs[i][1],atoms,values)
         else:
           self.variable_file_elements(f,pairs[i][1],etype,values)
-	f.close()
+        f.close()
 
       print(time, end=' ')
       sys.stdout.flush()

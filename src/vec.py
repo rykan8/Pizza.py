@@ -99,9 +99,9 @@ class vec:
       else:
         count = 0
         for i in range(self.nvec):
-	  if self.names[i].find(key) == 0:
-	    count += 1
-	    index = i
+          if self.names[i].find(key) == 0:
+            count += 1
+            index = i
         if count == 1:
           map.append(index)
         else:
@@ -127,9 +127,9 @@ class vec:
         else:
           count = 0
           for i in range(self.nvec):
-	    if self.names[i].find(key) == 0:
-	      count += 1
-	      index = i
+            if self.names[i].find(key) == 0:
+              count += 1
+              index = i
           if count == 1:
             map.append(index)
           else:

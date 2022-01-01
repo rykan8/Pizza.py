@@ -112,7 +112,7 @@ class chain:
           x = self.xlo + self.random()*self.xprd
           y = self.ylo + self.random()*self.yprd
           z = self.zlo + self.random()*self.zprd
-	  ix = iy = iz = 0
+          ix = iy = iz = 0
         else:
           restriction = True
           while restriction:
@@ -150,7 +150,7 @@ class chain:
 	        
         atoms.append([idatom,idmol,self.mtype,x,y,z,ix,iy,iz])
         if imonomer:
-	  bondid = id_bond_prev + imonomer
+          bondid = id_bond_prev + imonomer
           bonds.append([bondid,self.btype,idatom-1,idatom])
         
       self.atoms += atoms

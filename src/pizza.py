@@ -53,11 +53,18 @@ Tools:
 # modules needed by pizza.py
 
 import sys, subprocess, os, string, glob, re
+
+try:
+    #for python 2.x
+    import exceptions
+except ImportError:
+    #for python 3.x
+    import builtins as exceptions
+
 # from time import clock
 import time
 
 # readline not available in all Pythons
-
 try:
   import readline
   readline_flag = 1

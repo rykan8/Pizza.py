@@ -133,13 +133,13 @@ class log:
       else:
         count = 0
         for i in range(self.nvec):
-	  if self.names[i].find(key) == 0:
-	    count += 1
-	    index = i
-        if count == 1:
-          map.append(index)
-        else:
-          raise Exception("unique log vector %s not found" % key)
+          if self.names[i].find(key) == 0:
+            count += 1
+            index = i
+          if count == 1:
+            map.append(index)
+          else:
+            raise Exception("unique log vector %s not found" % key)
 
     vecs = []
     for i in range(len(keys)):
@@ -161,9 +161,9 @@ class log:
         else:
           count = 0
           for i in range(self.nvec):
-	    if self.names[i].find(key) == 0:
-	      count += 1
-	      index = i
+            if self.names[i].find(key) == 0:
+              count += 1
+              index = i
           if count == 1:
             map.append(index)
           else:
@@ -226,20 +226,20 @@ class log:
       keywords.insert(0,"Step")
       i = 0
       for keyword in keywords:
-	self.names.append(keyword)
+        self.names.append(keyword)
         self.ptr[keyword] = i
         i += 1
 
-    else:
-      s1 = txt.find(self.firststr)
-      s2 = txt.find("\n",s1)
-      line = txt[s1:s2]
-      words = line.split()
-      for i in range(len(words)):
-	self.names.append(words[i])
-        self.ptr[words[i]] = i
+      else:
+        s1 = txt.find(self.firststr)
+        s2 = txt.find("\n",s1)
+        line = txt[s1:s2]
+        words = line.split()
+        for i in range(len(words)):
+          self.names.append(words[i])
+          self.ptr[words[i]] = i
 
-    self.nvec = len(self.names)
+      self.nvec = len(self.names)
 
   # --------------------------------------------------------------------
 
@@ -275,36 +275,36 @@ class log:
 
       if s1 >= 0 and s2 >= 0 and s1 < s2:    # found s1,s2 with s1 before s2
         if self.style == 2:
-	  s1 = txt.find("\n",s1) + 1
+          s1 = txt.find("\n",s1) + 1
       elif s1 >= 0 and s2 >= 0 and s2 < s1:  # found s1,s2 with s2 before s1
         s1 = 0
       elif s1 == -1 and s2 >= 0:             # found s2, but no s1
-	last = 1
+        last = 1
         s1 = 0
       elif s1 >= 0 and s2 == -1:             # found s1, but no s2
         last = 1
         if self.style == 1:
           s2 = txt.rfind("\n--",s1) + 1
         else:
-	  s1 = txt.find("\n",s1) + 1
+          s1 = txt.find("\n",s1) + 1
           s2 = txt.rfind("\n",s1) + 1
-	eof -= len(txt) - s2
-      elif s1 == -1 and s2 == -1:            # found neither
-                                             # could be end-of-file section
-					     # or entire read was one chunk
+        eof -= len(txt) - s2
+      elif s1 == -1 and s2 == -1:           # found neither
+                                            # could be end-of-file section
+                                            # or entire read was one chunk
 
         if txt.find("Loop time of",start) == start:   # end of file, so exit
-	  eof -= len(txt) - start                     # reset eof to "Loop"
-	  break
+          eof -= len(txt) - start                     # reset eof to "Loop"
+          break
 
-	last = 1                                      # entire read is a chunk
+        last = 1                                      # entire read is a chunk
         s1 = 0
         if self.style == 1:
           s2 = txt.rfind("\n--",s1) + 1
         else:
           s2 = txt.rfind("\n",s1) + 1
-	eof -= len(txt) - s2
-	if s1 == s2: break
+          eof -= len(txt) - s2
+          if s1 == s2: break
 
       chunk = txt[s1:s2-1]
       start = s2

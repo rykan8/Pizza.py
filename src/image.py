@@ -52,7 +52,9 @@ import sys, os, subprocess, re, glob
 from math import *
 from tkinter import *
 import Pmw
-import Image,ImageTk
+# import Image,ImageTk
+from PIL import Image
+from PIL import ImageTk
 
 try: from DEFAULTS import PIZZA_CONVERT
 except: PIZZA_CONVERT = "convert"
@@ -216,7 +218,7 @@ class thumbnails:
       self.bigexist = 0
       if self.window:
         self.window.destroy()
-	self.window = None
+        self.window = None
     
     # create a new window with the big image
     

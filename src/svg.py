@@ -248,10 +248,10 @@ class svg:
 
         fraction = float(i) / (ncount-1)
         
-	if self.select != "":
+        if self.select != "":
           newstr = self.select % fraction
           data.aselect.test(newstr,time)
-	time,boxone,atoms,bonds,tris,lines = data.viz(which)
+        time,boxone,atoms,bonds,tris,lines = data.viz(which)
 
         if self.boxflag < 2: box = boxone
         if n == nstart: self.distance = compute_distance(box)
@@ -261,7 +261,7 @@ class svg:
         elif n < 1000: file = self.file + "0" + str(n)
         else:          file = self.file + str(n)
         
-	if self.panflag:
+        if self.panflag:
           self.ztheta = self.ztheta_start + \
                         fraction*(self.ztheta_stop - self.ztheta_start)
           self.azphi = self.azphi_start + \
@@ -270,9 +270,9 @@ class svg:
                        fraction*(self.scale_stop - self.scale_start)
           
         scaleflag = 0
-	if n == nstart or self.panflag: scaleflag = 1       
+        if n == nstart or self.panflag: scaleflag = 1       
 
-	self.single(file,box,atoms,bonds,tris,lines,scaleflag) 
+        self.single(file,box,atoms,bonds,tris,lines,scaleflag) 
         print(time, end=' ')
         sys.stdout.flush()
         i += 1
@@ -290,7 +290,7 @@ class svg:
       for i in range(ncount):
         fraction = float(i) / (ncount-1)
         
-	if self.select != "":
+        if self.select != "":
           newstr = self.select % fraction
           data.aselect.test(newstr,ntime)
         time,boxone,atoms,bonds,tris,lines = data.viz(which)
@@ -303,18 +303,18 @@ class svg:
         elif n < 1000: file = self.file + "0" + str(n)
         else:          file = self.file + str(n)
 	
-	if self.panflag:
+        if self.panflag:
           self.ztheta = self.ztheta_start + \
                         fraction*(self.ztheta_stop - self.ztheta_start)
           self.azphi = self.azphi_start + \
                        fraction*(self.azphi_stop - self.azphi_start)
-	  self.scale = self.scale_start + \
+          self.scale = self.scale_start + \
                        fraction*(self.scale_stop - self.scale_start)
 
         scaleflag = 0
-	if n == nstart or self.panflag: scaleflag = 1
+        if n == nstart or self.panflag: scaleflag = 1
 
-	self.single(file,box,atoms,bonds,tris,lines,scaleflag) 
+        self.single(file,box,atoms,bonds,tris,lines,scaleflag) 
         print(n, end=' ')
         sys.stdout.flush()
         n += 1
@@ -512,18 +512,18 @@ class svg:
     
     if flag == 0:
       if obj[0] == 0:     # atom with its color and radius
-	itype = int(obj[1])
-	if itype > self.vizinfo.nacolor:
+        itype = int(obj[1])
+        if itype > self.vizinfo.nacolor:
           raise Exception("atom type too big")
         color = self.vizinfo.acolor[itype]
         rad = self.vizinfo.arad[itype]
-	print('<circle cx="%s" cy="%s" r="%s" fill="rgb(%s,%s,%s)" stroke-width="%s" />' % \
+        print('<circle cx="%s" cy="%s" r="%s" fill="rgb(%s,%s,%s)" stroke-width="%s" />' % \
                    (obj[2],obj[3],rad*self.factor,
                     color[0]*255,color[1]*255,color[2]*255,self.thick), file=f)
         
       elif obj[0] == 1:    # tri with its color (need to add fill type)
         itype = int(obj[1]) 
-	if itype > self.vizinfo.ntcolor:
+        if itype > self.vizinfo.ntcolor:
           raise Exception("tri type too big")
         color = self.vizinfo.tcolor[itype]
         print('<polygon points= "%s,%s %s,%s %s,%s" fill="rgb(%s,%s,%s)" stroke="black" stroke-width="0.01" />' % \
@@ -532,17 +532,17 @@ class svg:
 
       elif obj[0] == 2:    # bond with its color and thickness
         itype = int(obj[1])
-	if itype > self.vizinfo.nbcolor:
+        if itype > self.vizinfo.nbcolor:
           raise Exception("bond type too big")
         color = self.vizinfo.bcolor[itype]
         thick = self.vizinfo.brad[itype]
-	print('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="rgb(%s,%s,%s)" stroke-width="%s" />' % \
+        print('<line x1="%s" y1="%s" x2="%s" y2="%s" stroke="rgb(%s,%s,%s)" stroke-width="%s" />' % \
               (obj[2],obj[3],obj[5],obj[6],
                color[0]*255,color[1]*255,color[2]*255,thick*self.factor), file=f)
         
       elif obj[0] == 3:    # line with its color and thickness
         itype = int(obj[1])
-	if itype > self.vizinfo.nlcolor:
+        if itype > self.vizinfo.nlcolor:
           raise Exception("line type too big")
         color = self.vizinfo.lcolor[itype]
         thick = self.vizinfo.lrad[itype]

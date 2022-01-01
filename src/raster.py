@@ -297,9 +297,9 @@ class raster:
           self.scale = self.scale_start + \
                           fraction*(self.scale_stop - self.scale_start)
 
-	if n == nstart or self.panflag:
+        if n == nstart or self.panflag:
           self.xtrans = self.ytrans = self.ztrans = 0.0
-	  output = self.single(1,file,box,atoms,bonds,tris,lines)
+          output = self.single(1,file,box,atoms,bonds,tris,lines)
           nums = re.findall("translation to:\s*(\S*)\s*(\S*)\s*(\S*)\s",output)
           self.xtrans = float(nums[0][0])
           self.ytrans = float(nums[0][1])
@@ -344,9 +344,9 @@ class raster:
           self.scale = self.scale_start + \
                           fraction*(self.scale_stop - self.scale_start)
 
-	if n == nstart or self.panflag:
+        if n == nstart or self.panflag:
           self.xtrans = self.ytrans = self.ztrans = 0.0
-	  output = self.single(1,file,box,atoms,bonds,tris,lines)
+          output = self.single(1,file,box,atoms,bonds,tris,lines)
           nums = re.findall("translation to:\s*(\S*)\s*(\S*)\s*(\S*)\s",output)
           self.xtrans = float(nums[0][0])
           self.ytrans = float(nums[0][1])

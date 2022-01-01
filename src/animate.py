@@ -49,7 +49,8 @@ a.delay(0.4)     	      set delay slider
 
 import sys, os, subprocess, re, glob
 from tkinter import *
-from ImageTk import PhotoImage
+# from ImageTk import PhotoImage
+from PIL import ImageTk
 
 # Class definition
 
@@ -74,7 +75,7 @@ class animate:
     
     self.images = []
     for i in range(self.nframes):
-      self.images.append(PhotoImage(file=self.files[i]))
+      self.images.append(ImageTk.PhotoImage(file=self.files[i]))
 
     # grab Tk instance from main
     
